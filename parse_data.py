@@ -104,8 +104,9 @@ def read_oshpd_data(file_name):
 
     pickle.dump(train_dict, open("/Users/oshpd/vikhyati/Desktop/training_data.pickle", "wb"))
 
-file_name =  '/Users/vikhyati/Desktop/OSHPD_TEST.csv'  # Spec
-read_oshpd_data(file_name)
+if __name__ == "__main__":
+    file_name =  '/Users/oshpddata/Desktop/vikhyati/OSHPD_CLEAN_LOS.csv'  # Spec
+    read_oshpd_data(file_name)
 
 
 

@@ -15,6 +15,7 @@ xx = train_dict['training_features']
 yy = train_dict['categories']
 model = train_knn(1000 , xx , yy)
 
-print model.score(xx ,yy )
-print model.predict([xx[100]]) , yy[100]
+if __name__ == "__main__":
+    print model.score(xx ,yy )
+    print model.predict([xx[100]]) , yy[100]
 # call train_knn function here

@@ -10,7 +10,7 @@ def train_knn(nearest_neighbors, training_features, train_classes):
     neigh.fit(X, y)
     return neigh
 
-train_dict = pickle.load(open("/Users/vikhyati/Desktop/training_data.pickle"))
+train_dict = pickle.load(open("/Users/oshpd/vikhyati/Desktop/training_data.pickle"))
 xx = train_dict['training_features']
 yy = train_dict['categories']
 model = train_knn(1000 , xx , yy)

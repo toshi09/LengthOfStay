@@ -102,7 +102,7 @@ def read_oshpd_data(file_name):
     train_dict = {'training_features':XX , 'categories' : YY}
 
 
-    pickle.dump(train_dict, open("/Users/vikhyati/Desktop/training_data.pickle", "wb"))
+    pickle.dump(train_dict, open("/Users/oshpd/vikhyati/Desktop/training_data.pickle", "wb"))
 
 file_name =  '/Users/vikhyati/Desktop/OSHPD_TEST.csv'  # Spec
 read_oshpd_data(file_name)

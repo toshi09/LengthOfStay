@@ -78,7 +78,7 @@ def featurize_row(row_data):
             comorbidity_idx += 1
             start_index += 1
 
-    return (patient_id,  patient_level_feature_vector + admission_level_feature_vector, category)
+    return (patient_id, admission_level_feature_vector, category, patient_level_feature_vector)
 
 def get_dummy_feature_seq(num_seq_reqd, feature_vector_length):
     '''
@@ -105,9 +105,13 @@ def read_oshpd_data(file_name, num_visit_seq_allowed):
         out = featurize_row(row_data)
         curr_id = out[0]
         if prev_id != '' and curr_id != prev_id:
+
             if vist_no > 0 and vist_no < num_visit_seq_allowed:
-                dummy_feature = get_dummy_feature_seq(num_visit_seq_allowed - vist_no, 54)
+
+                dummy_feature = get_dummy_feature_seq(num_visit_seq_allowed - vist_no, 51)
                 feature_vector_seq.extend(dummy_feature)
+                pat_lev = [0,0,0]
+                feature_vector_seq.extend(pat_lev)
                 XX.append(feature_vector_seq)
                 YY.append(0)
                 feature_vector_seq =[]
@@ -117,6 +121,7 @@ def read_oshpd_data(file_name, num_visit_seq_allowed):
             vist_no += 1
         elif vist_no == num_visit_seq_allowed  - 1:
             feature_vector_seq.extend(out[1])
+            feature_vector_seq.extend(out[3])
             XX.append(feature_vector_seq)
             YY.append(out[2])
             feature_vector_seq =[]
@@ -134,7 +139,7 @@ def read_oshpd_data(file_name, num_visit_seq_allowed):
 
 if __name__ == "__main__":
     file_name =  '/Users/vikhyati/Desktop/OSHPD_TEST.csv'  # Spec
-    read_oshpd_data(file_name, 3)
+    read_oshpd_data(file_name, 6)
 
 
 

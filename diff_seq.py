@@ -5,6 +5,8 @@ import pickle
 
 def get_class(actual_next_los):
     actual_next_los = int (actual_next_los)
+    if actual_next_los == 0:
+        category = 0
     if actual_next_los == 1:
         category = 1
     elif actual_next_los == 2:
@@ -97,18 +99,33 @@ def read_oshpd_data(file_name, num_visit_seq_allowed):
     YY = []
     XX = []
     prev_id = ''
+    last_out = ()
     for line in fhand:
         row_data =  line.strip().split(',')
         out = featurize_row(row_data)
+
         curr_id = out[0]
         if prev_id != '' and curr_id != prev_id:
-            feature_vector_seq =[]
-            vist_no = 0
+
+            if vist_no > 0 and vist_no < num_visit_seq_allowed:
+
+                dummy_feature = get_dummy_feature_seq(num_visit_seq_allowed - vist_no, 51)
+                dummy_feature.extend(feature_vector_seq)
+
+                pat_lev = last_out[3]
+                dummy_feature.extend(pat_lev)
+                #print len(dummy_feature)
+                XX.append(dummy_feature)
+                YY.append(last_out[2])
+                feature_vector_seq =[]
+                vist_no = 0
+
             feature_vector_seq.extend(out[1])
             vist_no += 1
         elif vist_no == num_visit_seq_allowed  - 1:
             feature_vector_seq.extend(out[1])
             feature_vector_seq.extend(out[3])
+            '''print len(feature_vector_seq)'''
             XX.append(feature_vector_seq)
             YY.append(out[2])
             feature_vector_seq =[]
@@ -118,20 +135,16 @@ def read_oshpd_data(file_name, num_visit_seq_allowed):
             vist_no += 1
 
         prev_id = curr_id
+        last_out = out
 
     train_dict = {'training_features':XX, 'categories' : YY}
 
-    pickle.dump(train_dict, open('/Users/oshpddata/Desktop/vikhyati/seq_training_data.pickle', "wb"))
-
+    pickle.dump(train_dict, open('/Users/vikhyati/Desktop/seq_training_data.pickle', "wb"))
+    print XX[1000]
 
 if __name__ == "__main__":
-<<<<<<< HEAD
-    file_name =  '/Users/oshpddata/Desktop/vikhyati/OSHPD_CHF_LOS.csv'  # Spec
-    read_oshpd_data(file_name, 7)
-=======
     file_name =  '/Users/vikhyati/Desktop/OSHPD_TEST.csv'  # Spec
-    read_oshpd_data(file_name, 14)
->>>>>>> 968212ec31ed3f85f78356a8b77cc1581c165715
+    read_oshpd_data(file_name, 4)
 
 
 

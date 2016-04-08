@@ -139,11 +139,11 @@ def read_oshpd_data(file_name, num_visit_seq_allowed):
 
     train_dict = {'training_features':XX, 'categories' : YY}
 
-    pickle.dump(train_dict, open('/Users/vikhyati/Desktop/seq_training_data.pickle', "wb"))
+    pickle.dump(train_dict, open('/Users/oshpddata/vikhyati/Desktop/seq_training_data.pickle', "wb"))
     print XX[1000]
 
 if __name__ == "__main__":
-    file_name =  '/Users/vikhyati/Desktop/OSHPD_TEST.csv'  # Spec
+    file_name =  '/Users/oshpddata/vikhyati/Desktop/OSHPD_TEST.csv'  # Spec
     read_oshpd_data(file_name, 4)
 
 

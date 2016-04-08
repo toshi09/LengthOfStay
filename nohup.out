@@ -1,0 +1,45 @@
+[ 0.82429847  0.81499203  0.81269943  0.81748564  0.81870412  0.81934248
+  0.82088123  0.81667199  0.8172524   0.82332268]
+[ 0.20736411  0.20633964  0.21260697  0.21239151  0.21354951  0.20450847
+  0.20632911  0.20855937  0.20940325  0.20611285]
+Traceback (most recent call last):
+  File "knn_train.py", line 19, in <module>
+    train_dict = pickle.load(open('/Users/oshpddata/Desktop/vikhyati/seq_training_data.pickle'))
+  File "/Users/oshpddata/anaconda/lib/python2.7/pickle.py", line 1384, in load
+    return Unpickler(file).load()
+  File "/Users/oshpddata/anaconda/lib/python2.7/pickle.py", line 864, in load
+    dispatch[key](self)
+  File "/Users/oshpddata/anaconda/lib/python2.7/pickle.py", line 960, in load_float
+    self.append(float(self.readline()[:-1]))
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "knn_train.py", line 19, in <module>
+    train_dict = pickle.load(open('/Users/oshpddata/Desktop/vikhyati/seq_training_data.pickle'))
+  File "/Users/oshpddata/anaconda/lib/python2.7/pickle.py", line 1384, in load
+    return Unpickler(file).load()
+  File "/Users/oshpddata/anaconda/lib/python2.7/pickle.py", line 864, in load
+    dispatch[key](self)
+  File "/Users/oshpddata/anaconda/lib/python2.7/pickle.py", line 886, in load_eof
+    raise EOFError
+EOFError
+Traceback (most recent call last):
+  File "knn_train.py", line 19, in <module>
+    train_dict = pickle.load(open('/Users/oshpddata/Desktop/vikhyati/seq_training_data.pickle'))
+  File "/Users/oshpddata/anaconda/lib/python2.7/pickle.py", line 1384, in load
+    return Unpickler(file).load()
+  File "/Users/oshpddata/anaconda/lib/python2.7/pickle.py", line 864, in load
+    dispatch[key](self)
+  File "/Users/oshpddata/anaconda/lib/python2.7/pickle.py", line 960, in load_float
+    self.append(float(self.readline()[:-1]))
+ValueError: could not convert string to float: 
+nohup: .out: No such file or directory
+[ 0.20999236  0.2088887   0.20944942  0.20860042  0.20953432  0.21004372
+  0.20483974  0.20463616  0.20569755  0.20553645]
+[ 0.20729367  0.20394775  0.210852    0.20944823  0.20555205  0.20701312
+  0.20779258  0.20853746  0.20908778  0.21029711]
+[ 0.20495671  0.20622582  0.2056835   0.20769759  0.20583556  0.20688782
+  0.20938263  0.2067432   0.20743392  0.20645768]
+[ 0.20495671  0.20622582  0.2056835   0.20769759  0.20583556  0.20688782
+  0.20938263  0.2067432   0.20743392  0.20645768]
+[ 0.20495671  0.20622582  0.2056835   0.20769759  0.20583556  0.20688782
+  0.20938263  0.2067432   0.20743392  0.20645768]

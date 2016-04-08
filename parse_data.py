@@ -5,8 +5,6 @@ import pickle
 
 def get_class(actual_next_los):
     actual_next_los = int (actual_next_los)
-    if actual_next_los == 0:
-        category = 0
     if actual_next_los == 1:
         category = 1
     elif actual_next_los == 2:
@@ -105,18 +103,8 @@ def read_oshpd_data(file_name, num_visit_seq_allowed):
         out = featurize_row(row_data)
         curr_id = out[0]
         if prev_id != '' and curr_id != prev_id:
-
-            if vist_no > 0 and vist_no < num_visit_seq_allowed:
-
-                dummy_feature = get_dummy_feature_seq(num_visit_seq_allowed - vist_no, 51)
-                feature_vector_seq.extend(dummy_feature)
-                pat_lev = [0,0,0]
-                feature_vector_seq.extend(pat_lev)
-                XX.append(feature_vector_seq)
-                YY.append(0)
-                feature_vector_seq =[]
-                vist_no = 0
-
+            feature_vector_seq =[]
+            vist_no = 0
             feature_vector_seq.extend(out[1])
             vist_no += 1
         elif vist_no == num_visit_seq_allowed  - 1:
@@ -134,12 +122,12 @@ def read_oshpd_data(file_name, num_visit_seq_allowed):
 
     train_dict = {'training_features':XX, 'categories' : YY}
 
-    pickle.dump(train_dict, open('/Users/vikhyati/Desktop/seq_training_data.pickle', "wb"))
+    pickle.dump(train_dict, open('/Users/oshpddata/Desktop/vikhyati/seq_training_data.pickle', "wb"))
 
 
 if __name__ == "__main__":
-    file_name =  '/Users/vikhyati/Desktop/OSHPD_TEST.csv'  # Spec
-    read_oshpd_data(file_name, 6)
+    file_name =  '/Users/oshpddata/Desktop/vikhyati/OSHPD_CHF_LOS.csv'  # Spec
+    read_oshpd_data(file_name, 7)
 
 
 

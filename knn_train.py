@@ -12,11 +12,11 @@ def train_knn(nearest_neighbors, training_features, train_classes):
 
 def cross_valid(xx, yy):
     clf = KNeighborsClassifier(n_neighbors=10)
-    scores = cv.cross_val_score(clf,xx,yy, cv=5)
+    scores = cv.cross_val_score(clf,xx,yy, cv=10)
     print(scores)
 
 if __name__ == "__main__":
-    train_dict = pickle.load(open("/Users/vikhyati/Desktop/seq_training_data.pickle"))
+    train_dict = pickle.load(open('/Users/oshpddata/Desktop/vikhyati/seq_training_data_2.pickle'))
     xx = train_dict['training_features']
     yy = train_dict['categories']
     cross_valid(xx, yy)

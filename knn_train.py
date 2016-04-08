@@ -12,7 +12,7 @@ def train_knn(nearest_neighbors, training_features, train_classes):
 
 def cross_valid(xx, yy):
     clf = KNeighborsClassifier(n_neighbors=10)
-    scores = cv.cross_val_score(clf,xx,yy, cv=5)
+    scores = cv.cross_val_score(clf,xx,yy, cv=10)
     print(scores)
 
 if __name__ == "__main__":
